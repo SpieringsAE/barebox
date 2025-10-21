@@ -4,6 +4,7 @@
 #include <debug_ll.h>
 #include <mach/imx/debug_ll.h>
 #include <mach/imx/generic.h>
+#include <mach/imx/iomux-mx93.h>
 #include <mach/imx/xload.h>
 #include <asm/barebox-arm.h>
 #include <soc/imx9/ddr.h>
@@ -11,16 +12,19 @@
 #include <mach/imx/xload.h>
 #include <mach/imx/esdctl.h>
 
+#define UART_PAD_CTRL   MUX_PAD_CTRL(MX93_PAD_CTL_DSE4 | \
+                                     MX93_PAD_CTL_FSEL_SFAST | \
+                                     MX93_PAD_CTL_PUE)
+
 extern char __dtb_z_imx93_frdm_start[];
 extern struct dram_timing_info frdm_imx93_dram_timing;
 
 static noinline void frdm_imx93_continue(void)
 {
 	void __iomem *base = IOMEM(MX9_UART1_BASE_ADDR);
-	void __iomem *muxbase = IOMEM(MX9_IOMUXC_BASE_ADDR);
 
 	/* configure LPUART1 TX pin */
-	writel(0x0, muxbase + 0x184);
+	imx93_setup_pad(MX93_PAD_UART1_TXD__LPUART1_TX | UART_PAD_CTRL);
 
 	imx9_uart_setup(base);
 	pbl_set_putc(lpuart32_putc, base + 0x10);
