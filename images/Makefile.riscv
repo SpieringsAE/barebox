@@ -27,3 +27,7 @@ image-$(CONFIG_BOARD_LITEX_LINUX) += barebox-litex-linux.img
 pblb-$(CONFIG_BOARD_ALLWINNER_D1) += start_allwinner_d1
 FILE_barebox-allwinner-d1.img = start_allwinner_d1.pblb
 image-$(CONFIG_BOARD_ALLWINNER_D1) += barebox-allwinner-d1.img
+
+pblb-$(CONFIG_BOARD_VISIONFIVE2) += start_starfive_visionfive2
+FILE_barebox-visionfive2.img = start_starfive_visionfive2.pblb
+image-$(CONFIG_BOARD_VISIONFIVE2) += barebox-visionfive2.img

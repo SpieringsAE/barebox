@@ -1,0 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0
+
+#include <riscv/starfive/jh7110-starfive-visionfive-2-v1.3b.dts>
+#include "jh7110-common.dtsi"

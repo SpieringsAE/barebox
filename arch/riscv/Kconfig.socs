@@ -110,6 +110,14 @@ config BOARD_BEAGLEV_BETA
 	  without the special DMA handling enabled by this option. It's safe
 	  to enable this option for other SoCs.
 
+config BOARD_VISIONFIVE2
+	bool "Starfive Visionfive2"
+	depends on ARCH_RV64I
+	select SOC_STARFIVE_JH71XX
+	select USE_COMPRESSED_DTB
+	select RISCV_SBI
+	select FIRMWARE_GENERIC_SBI
+
 endif
 
 config SOC_ALLWINNER_SUN20I
