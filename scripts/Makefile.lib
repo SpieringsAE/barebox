@@ -401,12 +401,12 @@ DTC_FLAGS.dtbo += -Wno-avoid_default_addr_size -Wno-reg_format -Wno-graph_port
 
 # Generate an assembly file to wrap the output of the device tree compiler
 quiet_cmd_dt_S_dtb = DTB     $@
-cmd_dt_S_dtb = $(srctree)/scripts/gen-dtb-s $(subst -,_,$(*F)) $< $(CONFIG_IMD) > $@
+cmd_dt_S_dtb = $(srctree)/scripts/gen-dtb-s $(subst .,_,$(subst -,_,$(*F))) $< $(CONFIG_IMD) > $@
 $(obj)/%.dtb.S: $(obj)/%.dtb $(obj)/%.dtb.z $(srctree)/scripts/gen-dtb-s FORCE
 	$(call if_changed,dt_S_dtb)
 
 quiet_cmd_dt_S_dtbo = DTBO    $@
-cmd_dt_S_dtbo = $(srctree)/scripts/gen-dtbo-s $(subst -,_,$(*F)) $< > $@
+cmd_dt_S_dtbo = $(srctree)/scripts/gen-dtbo-s $(subst .,_,$(subst -,_,$(*F))) $< > $@
 $(obj)/%.dtbo.S: $(obj)/%.dtbo $(srctree)/scripts/gen-dtbo-s FORCE
 	$(call if_changed,dt_S_dtbo)
 
