@@ -317,7 +317,12 @@ config DEBUG_ERIZO
 	select DEBUG_LL_NS16550
 
 config DEBUG_STARFIVE
-	bool "Starfive ns16550 serial0 port"
+	bool "Starfive jh7100 ns16550 serial0 port"
+	depends on SOC_STARFIVE
+	select DEBUG_LL_NS16550
+
+config DEBUG_STARFIVE_JH7110
+	bool "Starfive jh7110 ns16550 serial0 port"
 	depends on SOC_STARFIVE
 	select DEBUG_LL_NS16550
 
